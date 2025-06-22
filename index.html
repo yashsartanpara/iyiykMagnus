@@ -58,12 +58,12 @@
         base = result
       } else {
         // Split calculation
-        const baseAmount = Math.round(150000 * 12) / 200;
+        const baseAmount = Math.round((150000 * 12 / 200));
         const extraAmount = number - 150000;
-        const extraCalc = Math.round(extraAmount * 35) / 200;
+        const extraCalc = Math.round((extraAmount * 35 / 200));
         result = baseAmount + extraCalc;
-        base = baseAmount;
-        acc = extraCalc
+        base = Math.round((number * 12) / 200);
+        acc = Math.round((extraAmount * 23 / 200));
       }
 
       resultDiv.textContent = `Base Reward Points: ${base}`;

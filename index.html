@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      font-size: 1em;
+      padding: 8px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Number Calculator</h1>
+  <p>Enter a number below to calculate its square:</p>
+
+  <input type="number" id="numberInput" placeholder="Enter a number" />
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const input = document.getElementById('numberInput').value;
+      const number = parseFloat(input);
+      const resultDiv = document.getElementById('result');
+
+      // Clear previous result
+      resultDiv.textContent = "";
+      resultDiv.classList.remove("error");
+
+      if (isNaN(number) || number <= 0) {
+        resultDiv.textContent = "Please enter a valid positive number.";
+        resultDiv.classList.add("error");
+        return;
+      }
+
+      let result;
+
+      if (number < 150000) {
+        // Simple calculation
+        result = Math.round((number * 12) / 200);
+      } else {
+        // Split calculation
+        const baseAmount = Math.round(150000 * 12) / 200;
+        const extraAmount = number - 150000;
+        const extraCalc = Math.round(extraAmount * 35) / 200;
+        result = baseAmount + extraCalc;
+      }
+
+      resultDiv.textContent = `Result after calculation: ${result}`;
+    }
+  </script>
+
+</body>
+</html>

@@ -13,7 +13,7 @@
       font-size: 2em;
       padding: 16px;
     }
-    #result {
+    #result, #base, #acc {
       margin-top: 30px;
       font-weight: bold;
       font-size: 2em;
@@ -67,8 +67,8 @@
       }
 
       resultDiv.textContent = `Base Reward Points: ${base}`;
-      resultDiv.textContent = `Accelarated Reward Points: ${acc}`;
-      resultDiv.textContent = `Total Reward Points: ${result}`;
+      baseDiv.textContent = `Accelarated Reward Points: ${acc}`;
+      accDiv.textContent = `Total Reward Points: ${result}`;
     }
   </script>
 
